@@ -1,0 +1,22 @@
+title: Axios Supply Chain Attack Known C2 Communication
+id: b3d7c8c2-axios-c2
+status: experimental
+description: Detects communication to known Axios campaign infrastructure
+author: JT Wilson
+date: 2026/04/01
+logsource:
+  category: network_connection
+
+detection:
+  selection:
+    DestinationIp:
+      - 142.11.206.73
+    DestinationPort: 8000
+
+  domain:
+    DestinationHostname|contains:
+      - 'sfrclak.com'
+
+  condition: selection or domain
+
+level: critical

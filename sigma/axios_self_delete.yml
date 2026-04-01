@@ -1,0 +1,21 @@
+title: Node Modules Self-Modification or Deletion
+id: 77e2c9aa-axios-self-delete
+status: experimental
+description: Detects deletion or modification of node_modules during install
+author: JT Wilson
+date: 2026/04/01
+logsource:
+  category: file_event
+
+detection:
+  selection:
+    TargetFilename|contains: 'node_modules'
+
+  suspicious_actions:
+    EventType:
+      - Delete
+      - Rename
+
+  condition: selection and suspicious_actions
+
+level: medium

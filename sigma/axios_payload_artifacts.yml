@@ -1,0 +1,19 @@
+title: Suspicious Payload Artifacts from Axios Campaign
+id: e1f4a0c7-axios-artifacts
+status: experimental
+description: Detects known payload paths used in Axios compromise
+author: JT Wilson
+date: 2026/04/01
+logsource:
+  category: file_event
+
+detection:
+  selection:
+    TargetFilename|contains:
+      - '\%ProgramData%\wt.exe'
+      - '/tmp/ld.py'
+      - '/Library/Caches/com.apple.act.mond'
+
+  condition: selection
+
+level: high

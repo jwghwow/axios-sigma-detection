@@ -1,0 +1,32 @@
+title: Suspicious Node Install Script Execution Chain
+id: 6c9f2a4b-axios-install-chain
+status: experimental
+description: Detects node execution spawned from npm/yarn/pnpm during install scripts
+author: JT Wilson
+date: 2026/04/01
+logsource:
+  category: process_creation
+  product: windows
+
+detection:
+  parent_process:
+    ParentImage|endswith:
+      - '\npm.exe'
+      - '\node.exe'
+      - '\yarn.exe'
+      - '\pnpm.exe'
+      - '\bun.exe'
+
+  suspicious_child:
+    Image|endswith:
+      - '\powershell.exe'
+      - '\cmd.exe'
+      - '\python.exe'
+      - '\bash.exe'
+      - '\sh.exe'
+      - '\wscript.exe'
+      - '\cscript.exe'
+
+  condition: parent_process and suspicious_child
+
+level: high

@@ -1,0 +1,28 @@
+title: Node OS Fingerprinting with Execution Behavior
+id: 92ab3f1e-axios-fingerprint-exec
+status: experimental
+description: Detects Node processes performing OS discovery combined with execution behavior
+author: JT Wilson
+date: 2026/04/01
+logsource:
+  category: process_creation
+
+detection:
+  selection:
+    Image|endswith: '\node.exe'
+
+  commandline_indicators:
+    CommandLine|contains:
+      - 'os.platform'
+      - 'os.release'
+      - 'os.arch'
+
+  execution_indicators:
+    CommandLine|contains:
+      - 'child_process'
+      - 'exec'
+      - 'spawn'
+
+  condition: selection and commandline_indicators and execution_indicators
+
+level: medium

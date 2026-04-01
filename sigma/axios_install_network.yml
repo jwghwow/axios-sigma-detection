@@ -1,0 +1,24 @@
+title: npm Install Process Making External Network Connection
+id: 5aa2fbb1-axios-install-network
+status: experimental
+description: Detects npm or node making outbound connections during install phase
+author: JT Wilson
+date: 2026/04/01
+logsource:
+  category: network_connection
+
+detection:
+  process:
+    Image|endswith:
+      - '\node.exe'
+      - '\npm.exe'
+      - '\yarn.exe'
+      - '\pnpm.exe'
+
+  suspicious_ports:
+    DestinationPort:
+      - 8000
+
+  condition: process and suspicious_ports
+
+level: high
