@@ -48,8 +48,8 @@ sigma/
 ├── axios_install_chain.yml
 ├── axios_c2_detection.yml
 ├── axios_payload_artifacts.yml
-├── axios_runtime_behavior.yml
-├── axios_network_behavior.yml
+├── axios_os_fingeprinting.yml
+├── axios_install_network.yml
 └── axios_self_delete.yml
 ```
 
