@@ -197,10 +197,4 @@ They are provided for educational and defensive purposes only and should be vali
 
 ---
 
-## ⭐ Summary
 
-This project demonstrates how to detect modern supply chain attacks by focusing on:
-
-> **Behavioral patterns instead of static indicators**
-
-— a key principle in effective detection engineering.
